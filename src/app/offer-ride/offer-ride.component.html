@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card card-bordered-blue">
+        <h4 class="card-title bg-primary mb-4">Car Ride Registration Form</h4>
+          <div class="card-body">
+            <form [formGroup]="rideForm" (ngSubmit)="submitForm()">
+                <div class="mb-3">
+                    <label class="form-label"><b>Name:</b></label>
+                    <input type="text" class="form-control" formControlName="name" />
+                    <div *ngIf="rideForm.get('name')?.hasError('required') && rideForm.get('name')" class="text-danger">
+                      
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label"><b>Start Location:</b></label>
+                    <input type="text" class="form-control" formControlName="startLocation" />
+                    <div *ngIf="rideForm.get('startLocation')?.hasError('required') && rideForm.get('startLocation')" class="text-danger">
+                    
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label"><b>Destination:</b></label>
+                    <input type="text" class="form-control" formControlName="destination" />
+                    <div *ngIf="rideForm.get('destination')?.hasError('required') && rideForm.get('destination')" class="text-danger">
+                    
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label"><b>Car:</b></label>
+                    <input type="text" class="form-control" formControlName="car" />
+                    <div *ngIf="rideForm.get('car')?.hasError('required') && rideForm.get('car')" class="text-danger">
+                     
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label"><b>Seats Available</b></label>
+                    <input type="number" class="form-control" formControlName="seatsAvailable" />
+                    <div *ngIf="rideForm.get('seatsAvailable')?.hasError('required') && rideForm.get('seatsAvailable')" class="text-danger">
+                     
+                    </div>
+                    <div *ngIf="rideForm.get('seatsAvailable')?.hasError('invalidSeats') && rideForm.get('seatsAvailable')" class="text-danger">
+                      Seats Available should be between 0 and 8.
+                    </div>
+                  </div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary" [disabled]="rideForm.invalid">Submit</button>
+                <span class="mx-2"></span> 
+                <button type="button" class="btn btn-primary" (click)="goBack()">Go Back</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
